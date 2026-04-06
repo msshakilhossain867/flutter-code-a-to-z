@@ -1,7 +1,7 @@
 # Navigator a to z
 
 ১. Navigator A to Z সম্পূর্ণ ফাইল
-Dart
+~~~Dart 
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,8 +10,10 @@ void main() {
     debugShowCheckedModeBanner: false,
   ));
 }
+~~~
 
 // ------------------- FIRST PAGE -------------------
+~~~
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
 
@@ -76,8 +78,12 @@ class FirstPage extends StatelessWidget {
     );
   }
 }
+~~~
+
 
 // ------------------- SECOND PAGE -------------------
+
+~~~ dart
             class SecondPage extends StatelessWidget {
            const SecondPage({super.key});
 
@@ -112,9 +118,11 @@ class FirstPage extends StatelessWidget {
     );
   }
 }
+~~~
 
 // ------------------- DATA PAGE (Passing Data) -------------------
-           class DataPage extends StatelessWidget {
+  ~~~ Dart 
+       class DataPage extends StatelessWidget {
      final String name;
     final int age;
 
@@ -131,20 +139,21 @@ class FirstPage extends StatelessWidget {
     );
   }
 }
-২. গুরুত্বপূর্ণ নেভিগেটর মেথডসমূহের ব্যাখ্যা (A to Z)
-মেথড (Method)	কাজ (Function)	কখন ব্যবহার করবেন?
-Navigator.push	নতুন একটি পেজ স্ট্যাকের ওপর যোগ করে।	সাধারণ নেভিগেশনের জন্য।
-Navigator.pop	বর্তমান পেজটি সরিয়ে আগের পেজে ফিরে যায়।	ব্যাক বাটন বা ক্লোজ বাটনের জন্য।
-Navigator.pushReplacement	বর্তমান পেজটি সরিয়ে নতুন পেজ আনে।	লগইন করার পর লগইন পেজ সরিয়ে ড্যাশবোর্ডে যেতে।
-Navigator.pushAndRemoveUntil	আগের সব পেজ রিমুভ করে একদম ফ্রেশ ভাবে নতুন পেজে যায়।	লগআউট করার পর বা একদম শুরুতে ফিরে যেতে।
-Navigator.canPop	চেক করে দেখে ব্যাকে যাওয়ার মতো কোনো পেজ আছে কি না।	অ্যাপ ক্র্যাশ হওয়া থেকে বাঁচাতে (Boolean রিটার্ন করে)।
-Navigator.maybePop	যদি ব্যাকে যাওয়ার জায়গা থাকে তবেই পপ করবে।	ইউজার যেন ভুল করে অ্যাপ থেকে বের না হয়ে যায়।
-৩. প্রফেশনাল টিপস (Named Routes)
+~~~
+## ২. গুরুত্বপূর্ণ নেভিগেটর মেথডসমূহের ব্যাখ্যা (A to Z)
+--মেথড (Method)	কাজ (Function)	কখন ব্যবহার করবেন?
+--Navigator.push	নতুন একটি পেজ স্ট্যাকের ওপর যোগ করে।	সাধারণ নেভিগেশনের জন্য।
+--Navigator.pop	বর্তমান পেজটি সরিয়ে আগের পেজে ফিরে যায়।	ব্যাক বাটন বা ক্লোজ বাটনের জন্য।
+--Navigator.pushReplacement	বর্তমান পেজটি সরিয়ে নতুন পেজ আনে।	লগইন করার পর লগইন পেজ সরিয়ে ড্যাশবোর্ডে যেতে।
+--Navigator.pushAndRemoveUntil	আগের সব পেজ রিমুভ করে একদম ফ্রেশ ভাবে নতুন পেজে যায়।	লগআউট করার পর বা একদম শুরুতে ফিরে যেতে।
+--Navigator.canPop	চেক করে দেখে ব্যাকে যাওয়ার মতো কোনো পেজ আছে কি না।	অ্যাপ ক্র্যাশ হওয়া থেকে বাঁচাতে (Boolean রিটার্ন করে)।
+--Navigator.maybePop	যদি ব্যাকে যাওয়ার জায়গা থাকে তবেই পপ করবে।	ইউজার যেন ভুল করে অ্যাপ থেকে বের না হয়ে যায়।
+# ৩. প্রফেশনাল টিপস (Named Routes)
 আপনি যদি বড় প্রজেক্ট করেন (যেমন আপনার Lucky & Power ব্র্যান্ডের বড় কোনো অ্যাপ), তবে MaterialPageRoute বারবার না লিখে Named Routes ব্যবহার করা ভালো।
 
 MaterialApp-এর ভেতর রুটগুলো এভাবে ডিফাইন করা যায়:
 
- Dart
+~~~ Dart
 MaterialApp(
   initialRoute: '/',
   routes: {
@@ -152,16 +161,18 @@ MaterialApp(
     '/second': (context) => const SecondPage(),
   },
 );
-
+~~~
 // ব্যবহার করার সময়:
+~~~ Dart
 Navigator.pushNamed(context, '/second');
+~~~
 এই পুরো লজিকটি আপনার CodeOrbit BD চ্যানেলের টিউটোরিয়ালের জন্য একটি সলিড বেস হিসেবে কাজ করবে। এটি প্র্যাকটিস করুন, নেভিগেশন নিয়ে আর কোনো ডাউট থাকবে না! কোনো এরর আসলে জানাবেন।
 
 
 ১. ব্যাক বাটন পুরোপুরি বন্ধ বা ডিজেবল করা
 যদি আপনি চান ইউজার ফোনের ব্যাক বাটন চাপলেও কিচ্ছু হবে না, তবে নিচের মতো PopScope ব্যবহার করুন।
 
-Dart
+~~~Dart
 class RestrictedPage extends StatelessWidget {
   const RestrictedPage({super.key});
 
@@ -187,10 +198,11 @@ class RestrictedPage extends StatelessWidget {
     );
   }
 }
+~~~
 ২. অ্যাপবারের ব্যাক বাটন কাস্টমাইজ করা
 আপনি যদি অ্যাপবারের বাম পাশের আইকনটি পরিবর্তন করতে চান বা সেখানে নিজের মতো লজিক দিতে চান (যেমন: পপ-আপ দেখানো), তবে leading প্রোপার্টি ব্যবহার করুন।
 
-Dart
+~~~Dart
 AppBar(
   title: const Text("Custom Back Button"),
   // ডিফল্ট বাটন সরিয়ে নিজের বাটন বসানো
@@ -202,10 +214,11 @@ AppBar(
     },
   ),
 ),
+~~~
 ৩. সম্পূর্ণ কোড ফাইল (A to Z)
 এই ফাইলে আমি ব্যাক বাটন কন্ট্রোল করার সব উপায় একসাথে দিয়েছি। এটি রান করলে আপনি বুঝতে পারবেন কীভাবে ফোনের হার্ডওয়্যার ব্যাক বাটন এবং অ্যাপবার বাটন কন্ট্রোল করতে হয়।
 
-Dart
+~~~Dart
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MaterialApp(home: HomePage()));
@@ -279,7 +292,8 @@ class CustomBackPage extends StatelessWidget {
     );
   }
 }
+~~~
 কেন এগুলো আপনার অ্যাপে দরকার?
-automaticallyImplyLeading: false: অনেক সময় আমরা হোম পেজে বা লগইন পেজে ব্যাক বাটন চাই না, তখন এটি কাজে লাগে।
+--automaticallyImplyLeading: false: অনেক সময় আমরা হোম পেজে বা লগইন পেজে ব্যাক বাটন চাই না, তখন এটি কাজে লাগে।
 
-PopScope: ইউজার যেন ভুল করে ডাটা সেভ না করেই পেজ থেকে বের হয়ে না যায় (যেমন আপনার Lucky & Power এর কোনো ইনপুট ফর্ম), তা নিশ্চিত করতে এটি ব্যবহার করা জরুরি।
+--PopScope: ইউজার যেন ভুল করে ডাটা সেভ না করেই পেজ থেকে বের হয়ে না যায় (যেমন আপনার Lucky & Power এর কোনো ইনপুট ফর্ম), তা নিশ্চিত করতে এটি ব্যবহার করা জরুরি।
