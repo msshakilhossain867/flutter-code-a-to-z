@@ -13,7 +13,7 @@ void main() {
 ~~~
 
 // ------------------- FIRST PAGE -------------------
-~~~
+~~~ Dart
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
 
