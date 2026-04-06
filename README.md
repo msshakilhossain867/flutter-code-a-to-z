@@ -78,11 +78,11 @@ class FirstPage extends StatelessWidget {
 }
 
 // ------------------- SECOND PAGE -------------------
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
+            class SecondPage extends StatelessWidget {
+           const SecondPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
+     @override
+     Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Second Page")),
       body: Center(
@@ -114,14 +114,14 @@ class SecondPage extends StatelessWidget {
 }
 
 // ------------------- DATA PAGE (Passing Data) -------------------
-class DataPage extends StatelessWidget {
-  final String name;
-  final int age;
+           class DataPage extends StatelessWidget {
+     final String name;
+    final int age;
 
-  const DataPage({super.key, required this.name, required this.age});
+    const DataPage({super.key, required this.name, required this.age});
 
-  @override
-  Widget build(BuildContext context) {
+    @override
+    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Data Result Page")),
       body: Center(
@@ -144,7 +144,7 @@ Navigator.maybePop	যদি ব্যাকে যাওয়ার জায়গ�
 
 MaterialApp-এর ভেতর রুটগুলো এভাবে ডিফাইন করা যায়:
 
-Dart
+ Dart
 MaterialApp(
   initialRoute: '/',
   routes: {
@@ -156,3 +156,130 @@ MaterialApp(
 // ব্যবহার করার সময়:
 Navigator.pushNamed(context, '/second');
 এই পুরো লজিকটি আপনার CodeOrbit BD চ্যানেলের টিউটোরিয়ালের জন্য একটি সলিড বেস হিসেবে কাজ করবে। এটি প্র্যাকটিস করুন, নেভিগেশন নিয়ে আর কোনো ডাউট থাকবে না! কোনো এরর আসলে জানাবেন।
+
+
+১. ব্যাক বাটন পুরোপুরি বন্ধ বা ডিজেবল করা
+যদি আপনি চান ইউজার ফোনের ব্যাক বাটন চাপলেও কিচ্ছু হবে না, তবে নিচের মতো PopScope ব্যবহার করুন।
+
+Dart
+class RestrictedPage extends StatelessWidget {
+  const RestrictedPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+      canPop: false, // এটি false থাকলে ব্যাক বাটন কাজ করবে না
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        // এখানে চাইলে ইউজারকে মেসেজ দেখাতে পারেন
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("আপনি এই পেজ থেকে ব্যাকে যেতে পারবেন না!")),
+        );
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Restricted Page"),
+          // অ্যাপবারের ডিফল্ট ব্যাক বাটন সরাতে চাইলে:
+          automaticallyImplyLeading: false, 
+        ),
+        body: const Center(child: Text("ব্যাক বাটন লক করা হয়েছে")),
+      ),
+    );
+  }
+}
+২. অ্যাপবারের ব্যাক বাটন কাস্টমাইজ করা
+আপনি যদি অ্যাপবারের বাম পাশের আইকনটি পরিবর্তন করতে চান বা সেখানে নিজের মতো লজিক দিতে চান (যেমন: পপ-আপ দেখানো), তবে leading প্রোপার্টি ব্যবহার করুন।
+
+Dart
+AppBar(
+  title: const Text("Custom Back Button"),
+  // ডিফল্ট বাটন সরিয়ে নিজের বাটন বসানো
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back_ios_new, color: Colors.orange),
+    onPressed: () {
+      // ব্যাকে যাওয়ার আগে কনফার্মেশন ডায়ালগ
+      _showExitDialog(context);
+    },
+  ),
+),
+৩. সম্পূর্ণ কোড ফাইল (A to Z)
+এই ফাইলে আমি ব্যাক বাটন কন্ট্রোল করার সব উপায় একসাথে দিয়েছি। এটি রান করলে আপনি বুঝতে পারবেন কীভাবে ফোনের হার্ডওয়্যার ব্যাক বাটন এবং অ্যাপবার বাটন কন্ট্রোল করতে হয়।
+
+Dart
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MaterialApp(home: HomePage()));
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Home")),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CustomBackPage()),
+          ),
+          child: const Text("Go to Controlled Page"),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomBackPage extends StatelessWidget {
+  const CustomBackPage({super.key});
+
+  // এক্সিট ডায়ালগ ফাংশন
+ - void _showExitDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("নিশ্চিত তো?"),
+        content: const Text("আপনি কি সত্যিই ফিরে যেতে চান?"),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text("না")),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // ডায়ালগ বন্ধ
+              Navigator.pop(context); // আগের পেজে ফেরত
+            },
+            child: const Text("হ্যাঁ"),
+          ),
+        ],
+      ),
+    );
+  }-
+
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+      canPop: false, // ফোনের হার্ডওয়্যার ব্যাক বাটন অফ করা
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        _showExitDialog(context); // ফোনের ব্যাক বাটন চাপলে ডায়ালগ দেখাবে
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Controlled Page"),
+          // ১. leading ব্যবহার করে অ্যাপবার বাটন কাস্টমাইজ
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () => _showExitDialog(context),
+          ),
+          // ২. চাইলে automaticallyImplyLeading: false দিয়ে পুরোপুরি মুছে দিতে পারেন
+        ),
+        body: const Center(
+          child: Text("ফোনের বা অ্যাপবারের ব্যাক বাটন চাপলে কনফার্মেশন চাইবে।"),
+        ),
+      ),
+    );
+  }
+}
+কেন এগুলো আপনার অ্যাপে দরকার?
+automaticallyImplyLeading: false: অনেক সময় আমরা হোম পেজে বা লগইন পেজে ব্যাক বাটন চাই না, তখন এটি কাজে লাগে।
+
+PopScope: ইউজার যেন ভুল করে ডাটা সেভ না করেই পেজ থেকে বের হয়ে না যায় (যেমন আপনার Lucky & Power এর কোনো ইনপুট ফর্ম), তা নিশ্চিত করতে এটি ব্যবহার করা জরুরি।
