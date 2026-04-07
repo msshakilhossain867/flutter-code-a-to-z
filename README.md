@@ -1,7 +1,7 @@
-১. একদম সাধারণ বাটন (Basic Structure)
+# ১. একদম সাধারণ বাটন (Basic Structure)
 
 একটি ElevatedButton-এর দুটি আবশ্যিক অংশ থাকে: onPressed (কি কাজ করবে) এবং child (ভিতরে কী দেখাবে)।
-Dart
+~~~~Dart
 
 ElevatedButton(
   onPressed: () {
@@ -9,11 +9,12 @@ ElevatedButton(
   },
   child: const Text("Click Me"),
 )
+~~~~
 
-২. বাটনে স্টাইল যোগ করা (Styling)
+# ২. বাটনে স্টাইল যোগ করা (Styling)
 
 বাটনের রং, আকার বা বর্ডার পরিবর্তন করতে styleFrom মেথড ব্যবহার করা হয়।
-Dart
+~~~~ Dart
 
 ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -29,39 +30,42 @@ ElevatedButton(
   onPressed: () {},
   child: const Text("Styled Button"),
 )
+~~~~
 
-৩. আইকন সহ বাটন (Icon Button)
+# ৩. আইকন সহ বাটন (Icon Button)
 
 যদি বাটনের ভেতর টেক্সটের সাথে আইকন দিতে চান, তবে .icon কনস্ট্রাক্টর ব্যবহার করতে হয়।
-Dart
+~~~~Dart
 
 ElevatedButton.icon(
   onPressed: () {},
   icon: const Icon(Icons.download),
   label: const Text("Download"),
 )
+~~~~
 
-৪. বাটন ডিসেবল (Disable) করা
+# ৪. বাটন ডিসেবল (Disable) করা
 
 যদি আপনি onPressed-এ কোনো ফাংশন না দিয়ে null লিখে দেন, তবে বাটনটি ডিসেবল হয়ে যাবে এবং এর রং ধূসর (Grey) হয়ে যাবে।
-Dart
+~~~~Dart
 
 ElevatedButton(
   onPressed: null, // বাটনটি কাজ করবে না
   child: const Text("I am Disabled"),
 )
+~~~~
 
-৫. প্রপার্টি টেবিল (Quick Reference)
-প্রপার্টি	কাজ
-onPressed	বাটনে ক্লিক করলে কী হবে (Function)।
-onLongPress	চেপে ধরে রাখলে কী হবে।
-backgroundColor	বাটনের মূল রং পরিবর্তন।
-minimumSize	বাটনের সর্বনিম্ন সাইজ নির্ধারণ।
-side	বাটনের চারপাশে বর্ডার বা আউটলাইন দেওয়া।
-৬. একটি সম্পূর্ণ উদাহরণ (Copy-Paste Code)
+# ৫. প্রপার্টি টেবিল (Quick Reference)
+প্রপার্টি	কাজ<br>
+onPressed	বাটনে ক্লিক করলে কী হবে (Function)। <br>
+onLongPress	চেপে ধরে রাখলে কী হবে। <br>
+backgroundColor	বাটনের মূল রং পরিবর্তন। <br>
+minimumSize	বাটনের সর্বনিম্ন সাইজ নির্ধারণ। <br>
+side	বাটনের চারপাশে বর্ডার বা আউটলাইন দেওয়া। <br>
+# ৬. একটি সম্পূর্ণ উদাহরণ (Copy-Paste Code)
 
 নিচের কোডটি দিয়ে একটি সুন্দর কাস্টম বাটন তৈরি করা হয়েছে:
-Dart
+~~~~ Dart
 
 ElevatedButton(
   onPressed: () {
@@ -77,14 +81,15 @@ ElevatedButton(
   ),
   child: const Text("Explore More"),
 )
+~~~~
 
 অবশ্যই! minimumSize এবং side প্রপার্টি দুটি ব্যবহার করা হয় বাটনের সাইজ ফিক্সড করা এবং বাটনের চারপাশে বর্ডার দেওয়ার জন্য। এগুলো ElevatedButton.styleFrom-এর ভেতরে লিখতে হয়।
 
-নিচে সহজ উদাহরণ দিয়ে বুঝিয়ে দিচ্ছি:
+## নিচে সহজ উদাহরণ দিয়ে বুঝিয়ে দিচ্ছি:
 ১. minimumSize এর ব্যবহার
 
 এটি ব্যবহার করা হয় বাটনের একটি নির্দিষ্ট দৈর্ঘ্য (Width) এবং উচ্চতা (Height) দেওয়ার জন্য।
-Dart
+~~~~Dart
 
 ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -93,13 +98,14 @@ ElevatedButton(
   onPressed: () {},
   child: const Text("Fixed Size Button"),
 )
+~~~~
 
     টিপ: আপনি যদি চান বাটনটি স্ক্রিনের পুরো চওড়া হবে, তবে Size(double.infinity, 50) ব্যবহার করতে পারেন।
 
-২. side এর ব্যবহার
+# ২. side এর ব্যবহার
 
 বাটনের চারপাশে বর্ডার বা আউটলাইন দেওয়ার জন্য এটি ব্যবহার করা হয়। এতে বর্ডারের রং এবং মোটা (Width) কতটুকু হবে তা বলে দেওয়া যায়।
-Dart
+~~~~Dart
 
 ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -111,11 +117,12 @@ ElevatedButton(
   onPressed: () {},
   child: const Text("Border Button"),
 )
+~~~~
 
-৩. দুটি একসাথে ব্যবহার করলে কেমন দেখাবে?
+# ৩. দুটি একসাথে ব্যবহার করলে কেমন দেখাবে?
 
 নিচের কোডটি কপি করে টেস্ট করে দেখতে পারেন:
-Dart
+~~~~Dart
 
 ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -142,6 +149,7 @@ ElevatedButton(
     style: TextStyle(fontSize: 18),
   ),
 )
+~~~~
 
 সংক্ষেপে মনে রাখুন:
 
@@ -151,17 +159,17 @@ ElevatedButton(
 
     lutter-এ side প্রপার্টি মূলত BorderSide ক্লাস ব্যবহার করে কাজ করে। একটি বাটনের চারপাশের বর্ডার বা লাইনকে কাস্টমাইজ করার জন্য এতে কয়েকটি গুরুত্বপূর্ণ প্রপার্টি আছে।
 
-নিচে BorderSide-এর প্রধান প্রপার্টিগুলো দেওয়া হলো:
-১. প্রধান প্রপার্টিসমূহ (Core Properties)
-প্রপার্টি	কাজ (Description)	উদাহরণ
-color	বর্ডারের রং পরিবর্তন করে।	color: Colors.red
-width	বর্ডারটি কতটুকু মোটা হবে তা ঠিক করে।	width: 2.0
-style	বর্ডারটি থাকবে কি থাকবে না তা ঠিক করে।	BorderStyle.solid অথবা none
-strokeAlign	বর্ডারটি কি ইনসাইড, আউটসাইড নাকি সেন্টারে হবে।	BorderSide.strokeAlignCenter
-২. প্রাক্টিক্যাল উদাহরণ (Code Example)
+# নিচে BorderSide-এর প্রধান প্রপার্টিগুলো দেওয়া হলো:
+১. প্রধান প্রপার্টিসমূহ (Core Properties)<br>
+প্রপার্টি	কাজ (Description)	উদাহরণ <br>
+color	বর্ডারের রং পরিবর্তন করে।	color: Colors.red <br>
+width	বর্ডারটি কতটুকু মোটা হবে তা ঠিক করে।	width: 2.0 <br>
+style	বর্ডারটি থাকবে কি থাকবে না তা ঠিক করে।	BorderStyle.solid অথবা none <br>
+strokeAlign	বর্ডারটি কি ইনসাইড, আউটসাইড নাকি সেন্টারে হবে।	BorderSide.strokeAlignCenter 
+# ২. প্রাক্টিক্যাল উদাহরণ (Code Example)
 
 নিচে একটি বাটনে side-এর সব প্রপার্টি ব্যবহার করে দেখানো হলো:
-Dart
+~~~~Dart
 
 ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -178,8 +186,9 @@ ElevatedButton(
   onPressed: () {},
   child: const Text("Border Properties Demo"),
 )
+~~~~
 
-৩. কিছু গুরুত্বপূর্ণ বিষয় মনে রাখুন:
+# ৩. কিছু গুরুত্বপূর্ণ বিষয় মনে রাখুন:
 
     color: ডিফল্টভাবে এটি কালো থাকে। আপনি যেকোনো Color ব্যবহার করতে পারেন।
 
@@ -199,10 +208,10 @@ ElevatedButton(
 
         BorderSide.strokeAlignOutside: বর্ডার বাটনের বাইরে চলে যাবে।
 
-সহজ কথায়: আপনি যদি শুধু একটি লাল বর্ডার দিতে চান, তবে শুধু color এবং width ব্যবহার করলেই আপনার কাজ হয়ে যাবে।
+সহজ কথায়: আপনি যদি শুধু একটি লাল বর্ডার দিতে চান, তবে শুধু color এবং width ব্যবহার করলেই আপনার কাজ হয়ে যাবে।<br>
 
 ElevatedButton.styleFrom এর ভেতরে অনেকগুলো প্রপার্টি আছে যা দিয়ে আপনি একটি বাটনকে আপনার ইচ্ছামতো সাজাতে পারেন। নিচে সবথেকে প্রয়োজনীয় প্রপার্টিগুলো ক্যাটাগরি অনুযায়ী সাজিয়ে দেওয়া হলো:
-১. রঙের প্রপার্টি (Color Properties)
+# ১. রঙের প্রপার্টি (Color Properties)
 
     backgroundColor: বাটনের পেছনের মূল রং।
 
@@ -216,7 +225,7 @@ ElevatedButton.styleFrom এর ভেতরে অনেকগুলো প্�
 
     surfaceTintColor: Material 3 তে বাটনের উপরের লেয়ারের হালকা রঙের আভা (Tint)।
 
-২. আকার ও আয়তন (Shape & Size)
+# ২. আকার ও আয়তন (Shape & Size)
 
     minimumSize: বাটনের সর্বনিম্ন দৈর্ঘ্য ও প্রস্থ (যেমন: Size(150, 50))।
 
@@ -226,7 +235,7 @@ ElevatedButton.styleFrom এর ভেতরে অনেকগুলো প্�
 
     padding: বাটনের বর্ডার এবং ভেতরের টেক্সটের মাঝখানের দূরত্ব (যেমন: EdgeInsets.all(20))।
 
-৩. বর্ডার ও শেপ (Border & Shape)
+# ৩. বর্ডার ও শেপ (Border & Shape)
 
     side: বাটনের চারপাশে বর্ডার দেওয়ার জন্য (যেমন: BorderSide(color: Colors.black))।
 
@@ -238,7 +247,7 @@ ElevatedButton.styleFrom এর ভেতরে অনেকগুলো প্�
 
         StadiumBorder (ক্যাপসুল আকৃতির বাটন)।
 
-৪. টেক্সট ও ইফেক্ট (Text & Effects)
+# ৪. টেক্সট ও ইফেক্ট (Text & Effects)
 
     textStyle: টেক্সটের ফন্ট সাইজ, বোল্ডনেস ইত্যাদি সেট করার জন্য (যেমন: TextStyle(fontSize: 20))।
 
@@ -246,14 +255,14 @@ ElevatedButton.styleFrom এর ভেতরে অনেকগুলো প্�
 
     alignment: বাটনের ভেতরের কনটেন্ট (টেক্সট/আইকন) কোন দিকে থাকবে (Center, Left, Right)।
 
-৫. অ্যানিমেশন ও ফিডব্যাক (Feedback)
+# ৫. অ্যানিমেশন ও ফিডব্যাক (Feedback)
 
     animationDuration: বাটনের রঙ বা শ্যাডো পরিবর্তনের সময় কতক্ষণ লাগবে।
 
     enabledMouseCursor: কম্পিউটারে মাউস বাটনের ওপর নিলে কার্সর কেমন দেখাবে।
 
-একটি সব-সহ উদাহরণ (Master Example):
-Dart
+# একটি সব-সহ উদাহরণ (Master Example):
+~~~~Dart
 
 ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -275,19 +284,20 @@ ElevatedButton(
   onPressed: () {},
   child: const Text("Master Button"),
 )
+~~~~
 
-পরবর্তী ধাপ:
+# পরবর্তী ধাপ:
 
-হজ কথায় বলতে গেলে, EdgeInsets.symmetric মানে হলো আপনি বাটনের ভেতরে সমানভাবে (Symmetrically) ফাঁকা জায়গা বা দূরত্ব (Padding) তৈরি করছেন।
+হজ কথায় বলতে গেলে, EdgeInsets.symmetric মানে হলো আপনি বাটনের ভেতরে সমানভাবে (Symmetrically) ফাঁকা জায়গা বা দূরত্ব (Padding) তৈরি করছেন।<br>
 
-এখানে horizontal এবং vertical এর কাজ নিচে ভেঙে বুঝিয়ে দিচ্ছি:
-১. horizontal: 50 (ডানে ও বামে)
+এখানে horizontal এবং vertical এর কাজ নিচে ভেঙে বুঝিয়ে দিচ্ছি:<br>
+১. horizontal: 50 (ডানে ও বামে)<br>
 
-এটি বাটনের ভেতরের টেক্সট বা আইকন থেকে বাম পাশে ৫০ এবং ডান পাশে ৫০ পিক্সেল জায়গা খালি রাখবে। অর্থাৎ, বাটনটি দুই পাশে চওড়া হবে।
-২. vertical: 20 (উপরে ও নিচে)
+এটি বাটনের ভেতরের টেক্সট বা আইকন থেকে বাম পাশে ৫০ এবং ডান পাশে ৫০ পিক্সেল জায়গা খালি রাখবে। অর্থাৎ, বাটনটি দুই পাশে চওড়া হবে। <br>
+২. vertical: 20 (উপরে ও নিচে) <br>
 
-এটি বাটনের ভেতরের টেক্সট থেকে উপরে ২০ এবং নিচে ২০ পিক্সেল জায়গা খালি রাখবে। অর্থাৎ, বাটনটি লম্বায় বড় হবে।
-ভিজ্যুয়াল উদাহরণ (Visual Idea):
+এটি বাটনের ভেতরের টেক্সট থেকে উপরে ২০ এবং নিচে ২০ পিক্সেল জায়গা খালি রাখবে। অর্থাৎ, বাটনটি লম্বায় বড় হবে। <br>
+ভিজ্যুয়াল উদাহরণ (Visual Idea): <br>
 
 কল্পনা করুন আপনার বাটনের টেক্সট হলো "Login":
 
@@ -295,29 +305,30 @@ ElevatedButton(
 
     Horizontal (৫০): লেখার ডানে আর বামে ৫০ পিক্সেল গ্যাপ।
 
-Dart
+~~~~Dart
 
 padding: const EdgeInsets.symmetric(
   horizontal: 50, // ডানে-বামে দূরত্ব
   vertical: 20,   // উপরে-নিচে দূরত্ব
 ),
+~~~~
 
-কেন এটি ব্যবহার করবেন?
+ক# েন এটি ব্যবহার করবেন?
 
 আপনি যদি শুধু EdgeInsets.all(20) ব্যবহার করেন, তবে ডানে-বামে-উপরে-নিচে সবদিকেই ২০ পিক্সেল জায়গা সমানভাবে থাকবে। কিন্তু সাধারণত আমাদের বাটনগুলো লম্বার চেয়ে চওড়ায় বেশি বড় করার প্রয়োজন হয়, তাই symmetric ব্যবহার করে আমরা ডানে-বামে বেশি জায়গা (যেমন ৫০) এবং উপরে-নিচে কম জায়গা (যেমন ২০) দিতে পারি।
 আরও ৩টি ছোট টিপস:
 
-১. EdgeInsets.all(10): সব দিকে সমান ১০ পিক্সেল।
-২. EdgeInsets.only(left: 10, top: 5): শুধু নির্দিষ্ট কোনো এক বা একাধিক দিকে (যেমন শুধু বামে বা শুধু উপরে)।
-৩. EdgeInsets.fromLTRB(10, 20, 10, 20): চারদিকে আলাদা আলাদা মান (Left, Top, Right, Bottom)।
+১. EdgeInsets.all(10): সব দিকে সমান ১০ পিক্সেল। <br>
+২. EdgeInsets.only(left: 10, top: 5): শুধু নির্দিষ্ট কোনো এক বা একাধিক দিকে (যেমন শুধু বামে বা শুধু উপরে)। <br>
+৩. EdgeInsets.fromLTRB(10, 20, 10, 20): চারদিকে আলাদা আলাদা মান (Left, Top, Right, Bottom)। <br>
 
-OutlinedButton হলো Flutter-এর আরেকটি জনপ্রিয় বাটন, যা দেখতে অনেকটা হালকা এবং স্টাইলিশ। এর কোনো ডিফল্ট ব্যাকগ্রাউন্ড কালার থাকে না, শুধু চারদিকে একটি বর্ডার (Outline) থাকে।
+OutlinedButton হলো Flutter-এর আরেকটি জনপ্রিয় বাটন, যা দেখতে অনেকটা হালকা এবং স্টাইলিশ। এর কোনো ডিফল্ট ব্যাকগ্রাউন্ড কালার থাকে না, শুধু চারদিকে একটি বর্ডার (Outline) থাকে। 
 
 নিচে OutlinedButton এর শুরু থেকে শেষ পর্যন্ত (A to Z) বিস্তারিত আলোচনা করা হলো:
-১. সাধারণ গঠন (Basic Structure)
+# ১. সাধারণ গঠন (Basic Structure)
 
 এটি ব্যবহার করা একদম সহজ। ElevatedButton-এর মতোই এর onPressed এবং child থাকে।
-Dart
+~~~~ Dart
 
 OutlinedButton(
   onPressed: () {
@@ -325,11 +336,12 @@ OutlinedButton(
   },
   child: const Text("Click Me"),
 )
+~~~~
 
-২. স্টাইল যোগ করা (styleFrom)
+# ২. স্টাইল যোগ করা (styleFrom)
 
 এটির বর্ডার, টেক্সটের রং এবং আকার পরিবর্তন করতে styleFrom ব্যবহার করা হয়।
-Dart
+~~~~Dart
 
 OutlinedButton(
   style: OutlinedButton.styleFrom(
@@ -346,22 +358,24 @@ OutlinedButton(
   onPressed: () {},
   child: const Text("Styled Outlined Button"),
 )
+~~~~
 
-৩. আইকন সহ বাটন (Icon Button)
+# ৩. আইকন সহ বাটন (Icon Button)
 
 অন্যান্য বাটনের মতো এটিতেও আইকন ব্যবহার করা যায়।
-Dart
+~~~~Dart
 
 OutlinedButton.icon(
   onPressed: () {},
   icon: const Icon(Icons.add_shopping_cart),
   label: const Text("Add to Cart"),
 )
+~~~~
 
-৪. ব্যাকগ্রাউন্ড কালার দেওয়া (Hover Effect)
+# ৪. ব্যাকগ্রাউন্ড কালার দেওয়া (Hover Effect)
 
 যদিও OutlinedButton-এ সাধারণত ব্যাকগ্রাউন্ড থাকে না, কিন্তু আপনি চাইলে হালকা কোনো রং (যেমন বাটনে মাউস নিলে বা ক্লিক করলে) দিতে পারেন।
-Dart
+~~~~Dart
 
 OutlinedButton(
   style: OutlinedButton.styleFrom(
@@ -370,16 +384,17 @@ OutlinedButton(
   onPressed: () {},
   child: const Text("Light BG Button"),
 )
+~~~~
 
-৫. ElevatedButton বনাম OutlinedButton (পার্থক্য)
-ফিচার	ElevatedButton	OutlinedButton
-লুক (Look)	উঁচু এবং ভরাট (Filled)	শুধু বর্ডার, ভেতরটা খালি
-শ্যাডো (Shadow)	থাকে (Elevation)	থাকে না (সাধারণত)
-ব্যবহার	প্রধান কাজের জন্য (যেমন: Submit, Save)	গৌণ বা বিকল্প কাজের জন্য (যেমন: Cancel, Back)
-৬. একটি চমৎকার উদাহরণ (Complete Example)
+# ৫. ElevatedButton বনাম OutlinedButton (পার্থক্য)
+ফিচার	ElevatedButton	OutlinedButton<br>
+লুক (Look)	উঁচু এবং ভরাট (Filled)	শুধু বর্ডার, ভেতরটা খালি<br>
+শ্যাডো (Shadow)	থাকে (Elevation)	থাকে না (সাধারণত) <br>
+ব্যবহার	প্রধান কাজের জন্য (যেমন: Submit, Save)	গৌণ বা বিকল্প কাজের জন্য (যেমন: Cancel, Back) <br>
+৬. একটি চমৎকার উদাহরণ (Complete Example) <br>
 
-নিচে একটি বাটন দেওয়া হলো যা দেখতে খুব মডার্ন:
-Dart
+# নিচে একটি বাটন দেওয়া হলো যা দেখতে খুব মডার্ন:
+~~~Dart
 
 OutlinedButton(
   style: OutlinedButton.styleFrom(
@@ -392,16 +407,17 @@ OutlinedButton(
   onPressed: () {},
   child: const Text("Delete Account"),
 )
+~~~
 
-প্রো টিপ: আপনি কি জানেন StadiumBorder() দিলে বাটনের কোনাগুলো অটোমেটিক একদম গোল (ক্যাপসুলের মতো) হয়ে যায়? এতে আলাদা করে BorderRadius দিতে হয় না।
+প্রো টিপ: আপনি কি জানেন StadiumBorder() দিলে বাটনের কোনাগুলো অটোমেটিক একদম গোল (ক্যাপসুলের মতো) হয়ে যায়? এতে আলাদা করে BorderRadius দিতে হয় না। <br>
 
-TextButton হলো Flutter-এর সবচেয়ে সিম্পল বাটন। এতে কোনো ব্যাকগ্রাউন্ড কালার বা বর্ডার থাকে না—এটি দেখতে অনেকটা সাধারণ টেক্সটের মতো, কিন্তু ক্লিক করলে এটি রেসপন্স করে।
+TextButton হলো Flutter-এর সবচেয়ে সিম্পল বাটন। এতে কোনো ব্যাকগ্রাউন্ড কালার বা বর্ডার থাকে না—এটি দেখতে অনেকটা সাধারণ টেক্সটের মতো, কিন্তু ক্লিক করলে এটি রেসপন্স করে। <br>
 
-সাধারণত Cancel, Forgot Password, অথবা কোনো Link দেখানোর জন্য এটি ব্যবহার করা হয়।
-১. সাধারণ টেক্সট বাটন (Basic Structure)
+সাধারণত Cancel, Forgot Password, অথবা কোনো Link দেখানোর জন্য এটি ব্যবহার করা হয়। <br>
+# ১. সাধারণ টেক্সট বাটন (Basic Structure)
 
 এটি তৈরি করা খুবই সহজ:
-Dart
+~~~Dart
 
 TextButton(
   onPressed: () {
@@ -409,11 +425,12 @@ TextButton(
   },
   child: const Text("Forgot Password?"),
 )
+~~~
 
-২. স্টাইল যোগ করা (styleFrom)
+# ২. স্টাইল যোগ করা (styleFrom)
 
 যদিও এর ডিফল্ট কোনো বর্ডার নেই, তবুও আপনি এর টেক্সটের রং, প্যাডিং বা ক্লিক করার সময়কার ইফেক্ট পরিবর্তন করতে পারেন।
-Dart
+~~~ Dart
 
 TextButton(
   style: TextButton.styleFrom(
@@ -428,27 +445,29 @@ TextButton(
   onPressed: () {},
   child: const Text("Click Here"),
 )
+~~~
 
-৩. আইকন সহ টেক্সট বাটন (Icon Button)
+# ৩. আইকন সহ টেক্সট বাটন (Icon Button)
 
 অন্যান্য বাটনের মতো এটিতেও আইকন যোগ করা যায়:
-Dart
+~~~Dart
 
 TextButton.icon(
   onPressed: () {},
   icon: const Icon(Icons.info_outline, size: 20),
   label: const Text("Learn More"),
 )
+~~~
 
-৪. তিন ধরণের বাটনের পার্থক্য (এক নজরে)
-বাটন টাইপ	দেখতে কেমন	কখন ব্যবহার করবেন
-ElevatedButton	ভরাট এবং উঁচু (Shadow)	প্রধান কাজের জন্য (যেমন: Login, Submit)
-OutlinedButton	শুধু বর্ডার আছে	দ্বিতীয় সারির কাজের জন্য (যেমন: Register, Back)
-TextButton	শুধু টেক্সট (Clean)	লিঙ্কের মতো কাজের জন্য (যেমন: Skip, Edit)
-৫. একটি প্রো-লেভেল উদাহরণ (Clean Design)
+# ৪. তিন ধরণের বাটনের পার্থক্য (এক নজরে)
+বাটন টাইপ	দেখতে কেমন	কখন ব্যবহার করবেন <br>
+ElevatedButton	ভরাট এবং উঁচু (Shadow)	প্রধান কাজের জন্য (যেমন: Login, Submit) <br>
+OutlinedButton	শুধু বর্ডার আছে	দ্বিতীয় সারির কাজের জন্য (যেমন: Register, Back) <br>
+TextButton	শুধু টেক্সট (Clean)	লিঙ্কের মতো কাজের জন্য (যেমন: Skip, Edit) <br>
+# ৫. একটি প্রো-লেভেল উদাহরণ (Clean Design)
 
 নিচে একটি সুন্দর টেক্সট বাটন দেওয়া হলো যা দেখতে খুব মডার্ন:
-Dart
+~~~ Dart
 
 TextButton(
   style: TextButton.styleFrom(
@@ -467,16 +486,17 @@ TextButton(
     ],
   ),
 )
+~~~
 
-মজার ব্যাপার: আপনি কি জানেন InkWell বা GestureDetector ব্যবহার করে যেকোনো উইজেটকেই (যেমন: Image বা Container) বাটনের মতো বানানো যায়?
+মজার ব্যাপার: আপনি কি জানেন InkWell বা GestureDetector ব্যবহার করে যেকোনো উইজেটকেই (যেমন: Image বা Container) বাটনের মতো বানানো যায়? <br>
 
-অবশ্যই! যখন আপনার একটি Container, Image বা নিজের তৈরি করা কোনো ডিজাইনকে বাটনের মতো কাজ করাতে হয়, তখন আপনি InkWell অথবা GestureDetector ব্যবহার করতে পারেন।
+অবশ্যই! যখন আপনার একটি Container, Image বা নিজের তৈরি করা কোনো ডিজাইনকে বাটনের মতো কাজ করাতে হয়, তখন আপনি InkWell অথবা GestureDetector ব্যবহার করতে পারেন। <br>
 
 নিচে দুটির পার্থক্য এবং ব্যবহার সহজভাবে দেওয়া হলো:
-১. InkWell (Ripple Effect সহ)
+# ১. InkWell (Ripple Effect সহ)
 
 এটি ব্যবহার করলে বাটনে ক্লিক করার সময় একটি সুন্দর ঢেউয়ের মতো ইফেক্ট (Ripple Effect) দেখা যায়, যা আমরা সাধারণত গুগল বা অ্যান্ড্রয়েড অ্যাপে দেখি।
-Dart
+~~~ Dart
 
 InkWell(
   onTap: () {
@@ -495,11 +515,12 @@ InkWell(
     ),
   ),
 )
+~~~
 
-২. GestureDetector (সব ধরণের টাচ কন্ট্রোল)
+# ২. GestureDetector (সব ধরণের টাচ কন্ট্রোল)
 
 এতে কোনো রিভল ইফেক্ট থাকে না, কিন্তু এটি অনেক শক্তিশালী। এটি দিয়ে আপনি Double Tap, Long Press, এমনকি Drag বা টানার কাজও করতে পারেন।
-Dart
+~~~ Dart
 
 GestureDetector(
   onTap: () {
@@ -522,15 +543,16 @@ GestureDetector(
     ),
   ),
 )
+~~~
 
-৩. পার্থক্য কী? (এক নজরে)
-ফিচারা	InkWell	GestureDetector
-Visual Effect	ক্লিক করলে Ripple/ঢেউ দেখা যায়।	কোনো দৃশ্যমান ইফেক্ট নেই।
-ব্যবহার	সাধারণ বাটনের মতো ব্যবহারের জন্য সেরা।	জটিল টাচ (Double tap, Drag) এর জন্য।
-প্যারেন্ট	এটি সাধারণত Material উইজেটের ভেতরে ভালো কাজ করে।	যেকোনো জায়গায় সরাসরি কাজ করে।
+# ৩. পার্থক্য কী? (এক নজরে)
+ফিচারা	InkWell	GestureDetector<br>
+Visual Effect	ক্লিক করলে Ripple/ঢেউ দেখা যায়।	কোনো দৃশ্যমান ইফেক্ট নেই। <br>
+ব্যবহার	সাধারণ বাটনের মতো ব্যবহারের জন্য সেরা।	জটিল টাচ (Double tap, Drag) এর জন্য। <br>
+প্যারেন্ট	এটি সাধারণত Material উইজেটের ভেতরে ভালো কাজ করে।	যেকোনো জায়গায় সরাসরি কাজ করে। <br>
 প্রো টিপ:
 
-আপনি যদি চান আপনার পুরো অ্যাপের ব্যাকগ্রাউন্ডে একটি ইমেজ থাকবে এবং সেই ইমেজে ক্লিক করলে কাজ হবে, তখন GestureDetector ইমেজের ওপর র‍্যাপ (Wrap) করে দিলেই কাজ করবে!
+আপনি যদি চান আপনার পুরো অ্যাপের ব্যাকগ্রাউন্ডে একটি ইমেজ থাকবে এবং সেই ইমেজে ক্লিক করলে কাজ হবে, তখন GestureDetector ইমেজের ওপর র‍্যাপ (Wrap) করে দিলেই কাজ করবে! v
 
 Flutter-এ SizedBox হলো একটি অত্যন্ত প্রয়োজনীয় এবং সহজ উইজেট। এটি মূলত একটি নির্দিষ্ট মাপের "খালি বক্স" হিসেবে কাজ করে। নিচে এর A to Z ব্যবহার এবং কেন এটি ব্যবহার করবেন তা বুঝিয়ে দিচ্ছি:
 ১. কেন SizedBox ব্যবহার করবেন? (Why Use It?)
